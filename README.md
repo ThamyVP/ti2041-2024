@@ -2,8 +2,9 @@
 # Descripcion App
 Aplicación web sencilla que permite a los administradores registrar y consultar datos básicos de los productos
 # Requisitos:
-Python 3.10 
+Python 3.10 (o superior)
 Django 5.1
+Git
 # Ejecucion: 
 una vez instalado los requisitos, debe:
 clonar el repositorio desde su conexion de Github,
