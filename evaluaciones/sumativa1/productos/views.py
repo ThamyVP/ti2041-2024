@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import Post
 
 productos_registrados = []
 
@@ -24,3 +25,8 @@ def registro(request):
 def consulta(request):
 
     return render(request, 'consulta.html', {'productos': productos_registrados})
+
+def index(request):
+    all_posts = Post.objects.all().order_by('publish_date') #visualiza todos los datos 
+    context = {'posts': all_posts}#transforma en una variable para que pueda leerse
+    return render (request,'index.html', context)#presenta la informacion en un template
