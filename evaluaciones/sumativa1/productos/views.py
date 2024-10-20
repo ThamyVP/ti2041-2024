@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from .models import Producto, Marca,Caracteristicas, Categoria
 
 def index(request):
@@ -18,6 +19,9 @@ def index(request):
     context = { 'productos': productos_actuales }
     return render(request, 'index.html', context)
     
+=======
+from .models import Post
+>>>>>>> dc879c05f212bf70dee2bc2ec25850d75e7b2bf1
 
 
 def registro(request):
