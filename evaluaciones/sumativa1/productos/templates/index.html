@@ -10,20 +10,23 @@
         <table border="1">
             <thead>
                 <tr>
-                    <th>Nombre</th>
                     <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
                     <th>Marca</th>
                 </tr>
             </thead>
             <tbody>
                 {% for producto in productos %}
                     <tr>
-                        <td>{{ producto.nombre }}</td>
                         <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
                         <td>{{ producto.marca }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
-        </table>
+        </table><br/>
+        <a href="{% url 'registro' %}"><button>Volver</button></a>
 </body>
 </html>
