@@ -6,7 +6,10 @@
 </head>
 <body>
     <h1>Productos Registrados</h1>
-
+    <div style="margin-bottom: 20px;">
+        <a href="/admin/" >Ir a Administración</a>
+        <a href="/logout/">Cerrar Sesión</a>
+    </div>
         <table border="1">
             <thead>
                 <tr>
@@ -25,8 +28,12 @@
                         <td>{{ producto.marca }}</td>
                     </tr>
                 {% endfor %}
+                <div>
+                    <p>Usuario conectado: {{ request.session.username }}</p>
+                    <p>Fecha de conexión: {{ request.session.login_date }}</p>
+                </div>
             </tbody>
         </table><br/>
-        <a href="{% url 'registro' %}"><button>Volver</button></a>
+        
 </body>
 </html>
