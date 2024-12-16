@@ -19,6 +19,8 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Marca</th>
+                    <th>Categoria</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,14 +30,52 @@
                         <td>{{ producto.nombre }}</td>
                         <td>{{ producto.precio }}</td>
                         <td>{{ producto.marca }}</td>
+                        <td>{{ producto.categoria }}</td>
+                        <td>
+                            <button onclick="eliminar({{ producto.codigo }})">Eliminar</button>
+                            <button onclick="editar({{ producto.codigo }})">Editar</button>
+                        </td> 
                     </tr>
                 {% endfor %}
                 <div>
                     <p>Usuario conectado: {{ request.session.username }}</p>
                     <p>Fecha de conexión: {{ request.session.login_date }}</p>
                 </div>
+                <a href="{% url 'registro' %}"><button>Agregar</button></a>
             </tbody>
         </table><br/>
+
+        <script>
+            function editar(codigo){
+                window.location.href= `/productos/editar/${codigo}`;
+            }
+            const token = '{{token}}';
+            async function eliminar(codigo) {
+                const url = `/api/productos/${codigo}`;
+                try {
+                    const response = await fetch(url, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert('Producto eliminado exitosamente');
+                        window.location.reload();
+                    } else {
+                        const data = await response.json();
+                        alert(`Error: ${data.detail || 'No se pudo eliminar el producto'}`);
+                    }
+                } catch (error) {
+                    console.error('Error al eliminar el producto:', error);
+                    alert('Error inesperado al eliminar el producto');
+                }
+                
+                
+            }
+        </script>
         
 </body>
 </html>

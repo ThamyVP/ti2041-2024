@@ -7,12 +7,12 @@
     <title>Gestion de Productos SA</title>
 </head>
 <body>
-    <h1>Registro de productos</h1>
+    <h1>Editar Productos</h1>
     <form method="POST">
         {% csrf_token %}
         {{ formulario.as_p }}
-        <button type="submit">Registrar</button>
-        <button><a href="http://127.0.0.1:8000/productos/">Lista de productos</a></button> 
+        <button type="submit">Guardar</button>
+        <button><a href="http://127.0.0.1:8000/productos/">Cancelar</a></button> 
     </form>
     <br>
     
